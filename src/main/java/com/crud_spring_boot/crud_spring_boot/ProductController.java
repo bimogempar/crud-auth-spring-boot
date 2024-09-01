@@ -16,31 +16,38 @@ public class ProductController {
     private ProductService productService;
 
     @GetMapping
-    public List<Product> getAllProducts(){
-        return productService.getAllProducts();
+    public ResponseEntity<ApiResponse<List<Product>>> getAllProducts(){
+        List<Product> products = productService.getAllProducts();
+        ApiResponse<List<Product>> response = new ApiResponse<>(true, "Products retrieved successfullyy", products);
+        return ResponseEntity.ok(response);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Product> getProductById(@PathVariable UUID id){
+    public ResponseEntity<ApiResponse<Product>> getProductById(@PathVariable UUID id){
         Product product = productService.getProductById(id).orElseThrow();
-        return ResponseEntity.ok(product);
+        ApiResponse<Product> response = new ApiResponse<>(true, "Product retrieved successfully", product);
+        return ResponseEntity.ok(response);
     }
 
     @PostMapping
-    public Product createProduct(@RequestBody Product product){
-        return productService.createProduct(product);
+    public ResponseEntity<ApiResponse<Product>> createProduct(@RequestBody Product product){
+        Product newProduct = productService.createProduct(product);
+        ApiResponse<Product> response = new ApiResponse<>(true, "Succesfully created product", newProduct);
+        return ResponseEntity.ok(response);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Product> updateProduct(@PathVariable UUID id, @RequestBody Product productDetails){
+    public ResponseEntity<ApiResponse<Product>> updateProduct(@PathVariable UUID id, @RequestBody Product productDetails){
         Product updatedProduct = productService.updateProduct(id, productDetails);
-        return ResponseEntity.ok(updatedProduct);
+        ApiResponse<Product> response = new ApiResponse<>(true, "Successfully updated product", updatedProduct);
+        return ResponseEntity.ok(response);
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteProduct(@PathVariable UUID id){
+    public ResponseEntity<ApiResponse<Void>> deleteProduct(@PathVariable UUID id){
         productService.deleteProduct(id);
-        return ResponseEntity.noContent().build();
+        ApiResponse<Void> response = new ApiResponse<>(true, "Successfully delete product", null);
+        return ResponseEntity.ok(response);
     }
 }
 
