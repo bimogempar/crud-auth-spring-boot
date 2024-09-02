@@ -1,4 +1,4 @@
-package com.crud_spring_boot.crud_spring_boot;
+package com.crud_spring_boot.crud_spring_boot.domain.model;
 
 import jakarta.persistence.*;
 

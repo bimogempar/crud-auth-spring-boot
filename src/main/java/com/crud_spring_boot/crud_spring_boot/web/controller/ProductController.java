@@ -1,6 +1,8 @@
-package com.crud_spring_boot.crud_spring_boot;
+package com.crud_spring_boot.crud_spring_boot.web.controller;
 
-import org.apache.coyote.Response;
+import com.crud_spring_boot.crud_spring_boot.web.rest.ApiResponse;
+import com.crud_spring_boot.crud_spring_boot.application.service.ProductService;
+import com.crud_spring_boot.crud_spring_boot.domain.model.Product;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

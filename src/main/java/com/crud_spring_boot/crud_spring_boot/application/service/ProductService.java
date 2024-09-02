@@ -1,5 +1,7 @@
-package com.crud_spring_boot.crud_spring_boot;
+package com.crud_spring_boot.crud_spring_boot.application.service;
 
+import com.crud_spring_boot.crud_spring_boot.domain.model.Product;
+import com.crud_spring_boot.crud_spring_boot.domain.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
